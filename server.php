@@ -64,7 +64,7 @@ $serv->on('receive', function ($serv, $fd, $from_id, $data) {
 
         if ($header['type'] == 1)
         {
-            $resp = ord(32) . ord(2) . ord(0) . ord(0);
+            $resp = chr(32) . chr(2) . chr(0) . chr(0);//转换为二进制返回应该使用chr
             event_connect($header, substr($data, 2));
             $serv->send($fd, $resp);
         }
